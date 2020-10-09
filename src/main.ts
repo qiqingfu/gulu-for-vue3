@@ -9,5 +9,5 @@ import Markdown from './components/Markdown.vue';
 
 const app = createApp(App);
 app.use(router);
+app.component("Markdown", Markdown);
 app.mount("#app");
-app.component("Markdown", Markdown)

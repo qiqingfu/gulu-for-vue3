@@ -9,6 +9,7 @@
     <Button @click="showCode" v-else>查看代码</Button>
   </div>
   <div class="demo-code" v-if="codeVisible">
+    <span @click="copyCode">复制代码</span>
     <pre class="language-html" v-html="html" />
   </div>
 
@@ -23,7 +24,7 @@ import {
   computed,
   ref
 } from 'vue';
-const Prism = (window as any).Prism
+const Prism = (window as any).Prism;
 export default {
   components: {
     Button
@@ -32,18 +33,24 @@ export default {
     component: Object
   },
   setup(props) {
-    const html = computed(() => {
+		/**
+     * html 通过 highlight 方法生成的高亮的 html 字符串
+		 */
+		const html = computed(() => {
       return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html')
-    })
-    const showCode = () => codeVisible.value = true
-    const hideCode = () => codeVisible.value = false
-    const codeVisible = ref(false)
+    });
+    const showCode = () => codeVisible.value = true;
+    const hideCode = () => codeVisible.value = false;
+    const copyCode = () => {
+    	console.log("复制代码")
+    };
+    const codeVisible = ref(false);
     return {
-      Prism,
       html,
       codeVisible,
       showCode,
-      hideCode
+      hideCode,
+			copyCode
     }
   }
 }
@@ -72,8 +79,26 @@ $border-color: #d9d9d9;
   }
 
   &-code {
+    position: relative;
     padding: 8px 16px;
     border-top: 1px dashed $border-color;
+
+    & > span {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      padding: 4px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      border: 1px dashed transparent;
+
+      &:hover {
+        border-color: rgb(64, 169, 255);
+        color: rgb(64, 169, 255);
+        border-radius: 4px;
+        transition: all .3s;
+      }
+    }
 
     >pre {
       line-height: 1.1;

@@ -3,7 +3,7 @@
 </demo>
 
 <template>
-<Switch v-model:value="bool" />
+  <Switch v-model:value="bool" />
 </template>
 
 <script lang="ts">
@@ -18,7 +18,7 @@ export default {
     Switch,
   },
   setup() {
-    const bool = ref(false)
+    const bool = ref(false);
     return {
       bool
     }

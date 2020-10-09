@@ -12,7 +12,14 @@ import intro from './markdown/intro.md'
 import getStarted from './markdown/get-started.md'
 import install from './markdown/install.md'
 const history = createWebHashHistory();
-const md = string => h(Markdown, { content: string, key: string })
+
+/**
+ * 创建的虚拟DOM，告诉 Vue 页面上需要渲染什么样的节点。 VNode
+ * 一个普通对象。
+ * @param string
+ */
+const md = string => h(Markdown, { content: string, key: string });
+
 export const router = createRouter({
   history: history,
   routes: [
