@@ -4,7 +4,7 @@
     <slot />
   </button>
 </template>
-<script lang="ts" setup="props">
+<script lang="ts" setup="{theme='button', size='normal', level='normal'}">
 import { computed } from "vue";
 declare const props: {
   theme?: 'button' | 'text' | 'link';
@@ -15,18 +15,9 @@ declare const props: {
 }
 export default {
   props: {
-    theme: {
-      type: String,
-      default: "button",
-    },
-    size: {
-      type: String,
-      default: "normal",
-    },
-    level: {
-      type: String,
-      default: "normal",
-    },
+    theme: String,
+    size: String,
+    level: String,
     disabled: {
       type: Boolean,
       default: false,
@@ -37,7 +28,6 @@ export default {
     }
   },
 };
-const { theme, size, level } = props;
 export const classes = computed(() => {
   return {
     [`gulu-theme-${theme}`]: theme,
@@ -178,7 +168,7 @@ $grey: grey;
     height: 14px;
     display: inline-block;
     margin-right: 4px;
-    border-radius: 8px; 
+    border-radius: 8px;
     border-color: $blue $blue $blue transparent;
     border-style: solid;
     border-width: 2px;
@@ -186,7 +176,7 @@ $grey: grey;
   }
 }
 @keyframes gulu-spin {
-  0%{transform: rotate(0deg)} 
-  100%{transform: rotate(360deg)} 
+  0%{transform: rotate(0deg)}
+  100%{transform: rotate(360deg)}
 }
 </style>
