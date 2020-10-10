@@ -4,7 +4,7 @@
     <slot />
   </button>
 </template>
-<script lang="ts" setup="{ theme='button', size='normal', level='normal'}">
+<script lang="ts"  setup="props">
 import { computed } from "vue";
 declare const props: {
   theme?: 'button' | 'text' | 'link';
@@ -13,21 +13,8 @@ declare const props: {
   disabled: boolean;
   loading: boolean;
 };
-export default {
-  props: {
-    theme: String,
-    size: String,
-    level: String,
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    }
-  },
-};
+
+const { theme='button', size='normal', level='normal' } = props;
 export const classes = computed(() => {
   return {
     [`gulu-theme-${theme}`]: theme,
@@ -35,6 +22,23 @@ export const classes = computed(() => {
     [`gulu-level-${level}`]: level,
   };
 });
+
+export default {
+	props: {
+		theme: String,
+		size: String,
+		level: String,
+		disabled: {
+			type: Boolean,
+			default: false,
+		},
+		loading: {
+			type: Boolean,
+			default: false
+		}
+	},
+};
+
 </script>
 <style lang="scss">
 $h: 32px;
