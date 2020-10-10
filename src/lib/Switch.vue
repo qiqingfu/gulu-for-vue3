@@ -4,9 +4,9 @@
   </button>
 </template>
 <script lang="ts" setup="props, context">
-import { ref, SetupContext } from "vue";
-declare const props: {value: boolean}
-declare const context: SetupContext
+import { SetupContext } from "vue";
+declare const props: {value: boolean};
+declare const context: SetupContext;
 export default {
   props: {
     value: Boolean,
@@ -30,10 +30,10 @@ $h2: $h - 4px;
   }
   &:focus { outline: none; }
   &:active {
-    > span { width: $h2 + 4px; }
+    > span { width: $h2 + 6px; }
   }
   &.gulu-checked:active {
-    > span { width: $h2 + 4px; margin-left: -4px; }
+    > span { width: $h2 + 6px; margin-left: -6px; }
   }
 }
 </style>
