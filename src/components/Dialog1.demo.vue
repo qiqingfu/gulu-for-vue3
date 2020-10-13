@@ -24,9 +24,6 @@ import {
 import {
   ref
 } from 'vue'
-import {
-  openDialog
-} from '../lib/openDialog'
 export default {
   components: {
     Dialog,
@@ -38,9 +35,12 @@ export default {
       x.value = !x.value
     }
     const f1 = () => {
+      console.log('click ok!')
       return false
     }
-    const f2 = () => {}
+    const f2 = () => {
+      console.log('click cancel!')
+    }
     return {
       x,
       toggle,

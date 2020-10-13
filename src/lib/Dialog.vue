@@ -52,19 +52,19 @@ export default {
     Button,
   },
 };
+
 export const close = () => {
   context.emit('update:visible', false)
 }
-export const onClickOverlay = () => {
-  if (props.closeOnClickOverlay) {
-    close()
-  }
-}
+
+export const onClickOverlay = () => props.closeOnClickOverlay && close()
+
 export const onClickOk = () => {
   if (props.ok?.() !== false) {
     close()
   }
 }
+
 export const onClickCancel = () => {
   props.cancel?.()
   close()
